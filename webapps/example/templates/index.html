@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../static/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <title>Your App</title>
+  </head>
+
+  <body class="py-4">
+      <div class="container">
+       <p style="text-align:center;"><img src="../static/logo.jpg" width="50%" class="logo" /></p>
+      {% if message %}
+      <p class="message">{{ message | safe }}</p>
+      {% endif %}
+      <form action="/submit" method="POST">
+        <div class="form-group">
+          <h3>Your Identity</h3>
+          <input
+	    class="form-control"
+            type="text"
+            name="name"
+            placeholder="Your Identity"
+          />
+        </div>
+        <div class="form-group">
+          <h3>Your Options</h3>
+          <select class="custom-select d-block w-100" name="field">
+            <option value="">Option...</option>
+            <option value="xx">Option X</option>
+	    <option value="yy">Option Y</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <h3>Please rate...</h3>
+          <input type="radio" name="rating" value="1" /> 1
+          <input type="radio" name="rating" value="2" /> 2
+	  <input type="radio" name="rating" value="3" /> 3
+          <input type="radio" name="rating" value="4" /> 4
+	  <input type="radio" name="rating" value="5" /> 5
+          <input type="radio" name="rating" value="6" /> 6
+	  <input type="radio" name="rating" value="7" /> 7
+          <input type="radio" name="rating" value="8" /> 8
+	  <input type="radio" name="rating" value="9" /> 9
+          <input type="radio" name="rating" value="10" /> 10
+        </div>
+        <div class="form-group">
+          <h3>Comments</h3>
+          <textarea
+   	    class="form-control"
+            name="comments"
+            id=""></textarea>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block" />
+      </form>
+    </div>
+  </body>
+</html>
