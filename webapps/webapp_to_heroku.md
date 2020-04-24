@@ -6,7 +6,9 @@ I have been inspired by the following [youtube video: Build & Deploy A Python We
 2. Deploy your app to `heroku`
 3. Polishing your app
 
-[A super simple example of a webapp deployed with Heroku and a PostgreSQL DB](https://tempapp123456.herokuapp.com/)
+- [A super simple example of a webapp deployed with Heroku and a PostgreSQL DB](https://tempapp123456.herokuapp.com/)
+- [Source code](https://github.com/git1984/some.guides/tree/master/webapps/example)  
+
 # 1. Webapp flask structure
 
 ## Env creation
