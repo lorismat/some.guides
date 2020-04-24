@@ -1,12 +1,13 @@
 **Introduction**  
 This guide, with some external content, gives you all keys to set up a webapp with a PostgreSQL database on Heroku.  
-I have been inspired by the following [youtube video: Build & Deploy A Python Web App | Flask, Postgres & Heroku](https://www.youtube.com/watch?v=w25ea_I89iM) to start working on this guide.  
+I have been inspired by the following youtube video [Build & Deploy A Python Web App | Flask, Postgres & Heroku](https://www.youtube.com/watch?v=w25ea_I89iM) to start working on this guide.  
 
 1. Set up your `flask` app locally
-2. Deploy your app to `heroku`
-3. Polishing your app
+2. Polishing your app
+3. Deploy your app to `heroku`
 
-- [A super simple example of a webapp deployed with Heroku and a PostgreSQL DB](https://tempapp123456.herokuapp.com/)
+
+- [Super simple example](https://tempapp123456.herokuapp.com/)
 - [Source code](https://github.com/git1984/some.guides/tree/master/webapps/example)  
 
 # 1. Webapp flask structure
