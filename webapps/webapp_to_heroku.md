@@ -5,6 +5,9 @@ I have been inspired by the following youtube video [Build & Deploy A Python Web
 1. Set up your `flask` app locally
 2. Polishing your app
 3. Deploy your app to `heroku`
+4. Set up SMTP server to send emails
+5. Basics in Javascript
+6. AJAX and request from Python To Javascript
 
 
 - [Super simple example](https://tempapp123456.herokuapp.com/)
@@ -265,7 +268,7 @@ Here is some styling steps:
 
 ## Connect to `heroku`
 - connect to heroku with `heroku login`  
-- create your app with `heroku create name_of_app`
+- create your app with `heroku create name-of-app`
 
 ## Set up your postgreSQL DB and edit your code
 - create your postgreSQL DB with `heroku addons:create heroku-postgresql:hobby-dev --app name_of_app`
@@ -288,3 +291,121 @@ Here is some styling steps:
     exit()  
     ```
 - access the db remotely via cmd: `heroku pg:psql --app my_app_name`
+
+# 4. Setting up the SMTP server
+
+## Install packages
+
+We will use `Flask-Mail` which is convenient to easily set up the server.  
+`pip3 install Flask-Mail`  
+Followed by `pip freeze > requirements.txt` to update required packages.  
+
+Python code set up:  
+```
+from flask_mail import Mail, Message
+
+app = Flask(__name__)
+mail=Mail(app)
+
+# SMTP CONFIG
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'your.email@gmail.com'
+app.config['MAIL_PASSWORD'] = '******'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
+```  
+
+Python code to send:  
+```
+msg = Message('Feedback', sender = 'sender@gmail.com', recipients = ['recipient@gmail.com'])
+msg.body = "your message body" 
+mail.send(msg)
+```
+
+**BEWARE that you have to include your password/credentials**  
+
+# 5. Basics in Javascript
+# 6. AJAX and request from Python To Javascript
+to be carefully filled up!  
+
+- your html form/modal
+```
+<div class="submit-feedback">
+			<p id="feedbackButton" data-toggle="modal" data-target="#exampleModalCenter">Help me improve the app, Share your feedback!</p>
+</div>
+
+<!-- BOOTSTRAP MODAL -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLongTitle">I would glad to hear from you!</h5>
+		      </div>
+		      <div class="modal-body">
+			      <textarea class="feedback-form"></textarea>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary send-feedback">Send feedback</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+```
+
+- your javascript/ajax call
+```
+/*
+ * -------------------------- *
+ * FEEDBACK MODAL
+ * -------------------------- *
+ */
+
+// Print feedback form content in console
+$(".send-feedback").click(function() {
+  var feedbackText = $('textarea.feedback-form').val();
+
+  // parsing as json to send to python
+  var asJSON = JSON.stringify(feedbackText);
+
+  /* AJAX POST REQUEST TO PYTHON BACKEND
+   * some examples:
+   * https://codehandbook.org/python-flask-jquery-ajax-post/
+   */
+
+  $.ajax({
+    url: '/feedback',
+    //data: $('form').serialize(),
+    data: {'data': asJSON, 'test': 'test'},
+    type: 'POST',
+    success: function(response) {
+    },
+    error: function(error) {
+    }
+  });
+
+  $('#exampleModalCenter').modal('toggle');
+  $('textarea.feedback-form').val('');
+
+   // toogle classes on submit
+   $('.alert').toggleClass("alert-visible");
+
+  // remove it
+  setTimeout(function() {
+    $('.alert').removeClass("alert-visible");
+  },3000);
+});
+```
+
+- your python backend to catch the response
+```
+@app.route('/feedback', methods=['POST'])
+def get_feedback():
+    feeds =  request.form['data']
+    test = request.form['test']
+    msg = Message('Grocery App', sender = 'loris.mattioni@dataiku.com', recipients = ['loris.mattioni@dataiku.com'])
+    msg.body = feeds
+    mail.send(msg)
+    return json.dumps({'status':'OK','feedback':feeds})
+```
