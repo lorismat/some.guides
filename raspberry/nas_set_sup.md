@@ -61,12 +61,23 @@ Of course, you will need to replace the ssid & password
 - **once you found its ip**, you are ready to ssh the raspberry: `ssh pi@the_ip_adress_of_your_pi`. The default password is `raspberry`. You are now on your raspberry! 
 - **update your password!** run `passwd` and update it!
 - **to exit the ssh connection**, run `logout` 
-### Optional config
+
+### Optional config: connect automatically to your pi
 
 You might find it a bit annoying to retype your ssh command and your password everytime you access your pi. We can configure the connection so that you won't be prompt to do it anymore. The condition is to have an ssh key set already. If not, [here is a good guide](http://rabexc.org/posts/using-ssh-agent) to drive you through!   
 - Copy/Paste your laptop public key to the raspberry. Use the following command `ssh-copy-id pi@192.168.0.31` and replace the IP address accordingly. You will be prompt to enter your password. From now on, you should be able to log in without having to type your password!  
 
-To go further: add it as an `alias` and you are all set! 
+To go further: add it as an `alias` and you are all set!
+
+### Optional config: control your pi remotely with a graphical interface
+
+You will have to set up a VNC server on your raspberry first:
+- `sudo apt install realvnc-vnc-server realvnc-vnc-viewer`
+- Then enable VNC as follow: `sudo raspi-config` > `Interfacing Options` > `VNC : Yes`
+- On your local laptop, you will be able to connect via a VNC viewer, for example [RealVNC](https://www.realvnc.com/)
+- If you are facing the "Cannot Currently Show the Desktop", you will have to tweak some configuration on the resolution. 
+	- `sudo raspi-config` > `Advanced Options` > Choose a wider resolution and reboot
+
  
 ## Set up your NAS
 
