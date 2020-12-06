@@ -159,6 +159,11 @@ if __name__ == '__main__':
   app.run()
 ```  
 
+**Note on debug mode**  
+The following line: `app.debug = True` at the very bottom enables the debug mode. This helps for two things: 
+- the server will adapt to changes: you don't have to restart the server, just refresh the page when changing (loader)
+- the server keeps a trace of errors: while browsing, you will get an error thrown to your web page (debugger)
+
 **Now try your script from the console**  
 `python3 app.py`  
 
@@ -326,6 +331,20 @@ mail.send(msg)
 
 **BEWARE that you have to include your password/credentials**  
 
+# 5. Extra Set up
+
+## Pinging Live for heroku no-idle
+
+```
+while True:
+    requests.get('http://blogdelivery.herokuapp.com/')
+    time.sleep(600)
+```
+
+## Access the local webapp via phone
+
+```
+```
 # 5. Basics in Javascript
 # 6. AJAX and request from Python To Javascript
 to be carefully filled up!  
