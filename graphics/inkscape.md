@@ -34,3 +34,10 @@
 2 options:
 - read file from .svg file (copy/paste)
 - `<img src="/static/image.svg">` read as an image
+
+## From web svg to inkscape
+
+Process here is much simpler:  
+- retrieve your `<svg>` from the HTML code
+- save it as and `.svg` file
+- open it to inkscape
