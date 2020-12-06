@@ -2,7 +2,7 @@
 
 ## Resources
 
-[This blog article from Nick Manning sums up](https://medium.com/netscape/deploying-a-vue-js-2-x-app-to-heroku-in-5-steps-tutorial-a69845ace489) the process to create a `vue.js` app in 5 minutes and deploy it to Heroku. Requires [Express](https://expressjs.com/) to set up a `node.js` server.  
+[This blog article from Nick Manning](https://medium.com/netscape/deploying-a-vue-js-2-x-app-to-heroku-in-5-steps-tutorial-a69845ace489) sums up the process to create a `vue.js` app in 5 minutes and deploy it to Heroku. Requires [Express](https://expressjs.com/) to set up a `node.js` server.  
 
 ## External Doc on Vue
 
