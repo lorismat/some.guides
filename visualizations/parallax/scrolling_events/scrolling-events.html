@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><br>
+
+<div class="dataviz">
+	<div class="dataviz-wrapper">
+		<div class="slides">
+		</div>
+		<div class="articles">
+			<div class="article" id="article1">
+				ARTICLE 1
+			</div>
+			<div class="article" id="article2">
+				ARTICLE 2
+			</div>
+		</div>
+	</div>
+</div>
+			
+{% endblock %}
+
+{% block js_packages %}
+
+
+<script src="../static/js/libs/d3.v6.min.js"></script>
+<script src="../static/js/projects/temp.js"></script>
+{% endblock %}
