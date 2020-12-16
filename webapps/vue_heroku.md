@@ -28,6 +28,15 @@
 
 ### Installation
 
+If first install of the `vue-cli`: `npm install --global vue-cli`  
+
+```
+vue init webpack project-name 
+cd project-name 
+npm install
+npm run dev
+```  
+
 - You don't have to set up the `router`, for one SPA with links only
 
 ### Dev vs Prod
@@ -97,12 +106,49 @@ export default {
 
 	</script>
 
+- add watcher to get the freshest data (after a api response upon creation for example). [Here is the official doc on watchers](https://vuejs.org/v2/guide/computed.html) and [here is a d3 implemntation article](https://www.sitepoint.com/vue-d3-data-visualization-intro/)
+- when calling a function from `methods` in other objects, make sure to add `this.` prior to the function. Eg:
+```
+export default {
+	name: 'AgeDistribution',
+	props: ["dataset"],
+	watch: {
+		dataset(val) {
+			this.temp(val);
+		}
+	},
+	methods: {
+		temp(x) { console.log(x) }
+	}
+}
+```
+
+
 ## On external packages
 
-### Overall
+### Some setup 
 
 - `axios`, `npm i axios` to facilitate api calls
-- after `npm i d3`, you should call it this way: `import * as d3 from 'd3'` in any component requiring d3.
+- after `npm i d3`, you should call it this way: `import * as d3 from 'd3'` in any component requiring d3. On top of this, [here is a full d3 setup article](https://www.sitepoint.com/vue-d3-data-visualization-intro/).
+- bootstrap:
+
+```
+npm install vue bootstrap-vue bootstrap
+```  
+
+To call, in the `main.js` file:  
+```
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+```  
+
 
 ### Google API
 
