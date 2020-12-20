@@ -1,6 +1,20 @@
 # Introduction
 
+## Install vue-cli
+
+```
+npm install -g @vue/cli
+```  
+At least `v3.0.0` to import files fro the `public/` folder.  
+
+Create your project:
+```
+vue create <YOUR-PROJECT>
+```
+
 ## Resources
+
+**Watch out**. The following article is not up to date regarding the `vue` setup. Refer to the installation instructions above, and jump to the article for the deployment setup.  
 
 [This blog article from Nick Manning](https://medium.com/netscape/deploying-a-vue-js-2-x-app-to-heroku-in-5-steps-tutorial-a69845ace489) sums up the process to create a `vue.js` app in 5 minutes and deploy it to Heroku. Requires [Express](https://expressjs.com/) to set up a `node.js` server.  
 
@@ -26,23 +40,23 @@
 
 ## On install
 
-### Installation
-
-If first install of the `vue-cli`: `npm install --global vue-cli`  
-
-```
-vue init webpack project-name 
-cd project-name 
-npm install
-npm run dev
-```  
-
-- You don't have to set up the `router`, for one SPA with links only
-
 ### Dev vs Prod
 
 - From dev (auto-reload) to prod, the `package.json` file should swith from `"start": "npm run dev"` to `"start": "node server.js"`.
 - When working on the dev env, use `npm run dev` instead of `node server.js` to get live updates.
+
+## Access local files
+
+Much easier with `vue-cli v3.0.0` at least.  
+Your static files should be in the `public/` folder, and can be called as follow, with `d3` for instance:  
+```
+mounted() {
+		let dataset = d3.csv("export.csv");
+		dataset.then(function(data) {
+			console.log(data);
+		});
+	}
+```  
 
 ## On concepts and methods
 
@@ -106,7 +120,7 @@ export default {
 
 	</script>
 
-- add watcher to get the freshest data (after a api response upon creation for example). [Here is the official doc on watchers](https://vuejs.org/v2/guide/computed.html) and [here is a d3 implemntation article](https://www.sitepoint.com/vue-d3-data-visualization-intro/)
+- add watcher to get the freshest data (after a api response upon creation for example). [Here is the official doc on watchers](https://vuejs.org/v2/guide/computed.html) and [here is a d3 implemntation article](https://www.sitepoint.com/vue-d3-data-visualization-intro/). More on watchers and `d3` below.
 - when calling a function from `methods` in other objects, make sure to add `this.` prior to the function. Eg:
 ```
 export default {
@@ -122,6 +136,29 @@ export default {
 	}
 }
 ```
+
+- **watchers** applied with `d3`. Here is the workflow:
+	- **retrieve** your data on the App component, with `mounted()` and try it out (from APIs or static files). Example:
+		```
+		mounted() {
+		let dataset = d3.csv("export.csv");
+		this.dts = dataset;
+		dataset.then(function(data) {
+			console.log("home", data);
+		});
+		}
+		```
+		It is retrieved, and the promise itself is set as a `prop`.  
+	- **Bind** it to your secondary component: `<GraphTop :dts="dts" class="comp"/>`
+	- **Catch** the promise in your secondary component with a watcher:
+		```
+		watch: {
+			dts(val) {
+			val.then(function(data) {
+				console.log(data);
+			})
+		}}
+		```
 
 
 ## On external packages
