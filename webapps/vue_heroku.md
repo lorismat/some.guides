@@ -10,6 +10,11 @@ At least `v3.0.0` to import files fro the `public/` folder.
 Create your project:
 ```
 vue create <YOUR-PROJECT>
+```  
+
+Start the server:
+```
+npm run serve
 ```
 
 ## Resources
@@ -40,10 +45,20 @@ vue create <YOUR-PROJECT>
 
 ## On install
 
+### Some default config:
+
+Some errors & warnings by default can be removed: in the `package.json` file, you can add the following:  
+```
+"rules": {
+	"no-console": "off",
+ 	"no-unused-vars": "off"
+}
+```
+
 ### Dev vs Prod
 
 - From dev (auto-reload) to prod, the `package.json` file should swith from `"start": "npm run dev"` to `"start": "node server.js"`.
-- When working on the dev env, use `npm run dev` instead of `node server.js` to get live updates.
+- When working on the dev env, use `npm run serve` instead of `node server.js` to get live updates.
 
 ## Access local files
 
@@ -55,7 +70,7 @@ mounted() {
 		dataset.then(function(data) {
 			console.log(data);
 		});
-	}
+}
 ```  
 
 ## On concepts and methods
@@ -122,8 +137,8 @@ export default {
 
 - add watcher to get the freshest data (after a api response upon creation for example). [Here is the official doc on watchers](https://vuejs.org/v2/guide/computed.html) and [here is a d3 implemntation article](https://www.sitepoint.com/vue-d3-data-visualization-intro/). More on watchers and `d3` below.
 - when calling a function from `methods` in other objects, make sure to add `this.` prior to the function. Eg:
-```
-export default {
+	```
+	export default {
 	name: 'AgeDistribution',
 	props: ["dataset"],
 	watch: {
@@ -134,9 +149,8 @@ export default {
 	methods: {
 		temp(x) { console.log(x) }
 	}
-}
-```
-
+	}
+	```
 - **watchers** applied with `d3`. Here is the workflow:
 	- **retrieve** your data on the App component, with `mounted()` and try it out (from APIs or static files). Example:
 		```
@@ -159,7 +173,6 @@ export default {
 			})
 		}}
 		```
-
 
 ## On external packages
 
