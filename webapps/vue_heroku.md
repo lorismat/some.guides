@@ -19,10 +19,6 @@ npm run serve
 
 ## Resources
 
-**Watch out**. The following article is not up to date regarding the `vue` setup. Refer to the installation instructions above, and jump to the article for the deployment setup.  
-
-[This blog article from Nick Manning](https://medium.com/netscape/deploying-a-vue-js-2-x-app-to-heroku-in-5-steps-tutorial-a69845ace489) sums up the process to create a `vue.js` app in 5 minutes and deploy it to Heroku. Requires [Express](https://expressjs.com/) to set up a `node.js` server.  
-
 ## External Doc on Vue
 
 - [Vue Doc](https://vuejs.org/)
@@ -32,8 +28,6 @@ npm run serve
 ## External doc on deployment
 
 - [Flask with Vue](https://stackoverflow.com/questions/46214132/how-can-i-combine-vue-js-with-flask)
-- [Flask xx Node xx Heroku xx Express](https://medium.com/netscape/deploying-a-vue-js-2-x-app-to-heroku-in-5-steps-tutorial-a69845ace489)
-- [Stativ Vue app with Heroku](https://medium.com/better-programming/deploying-a-vue-js-app-to-heroku-d16f95c07a04)
 - [Vue Article from Full Stack Python](https://www.fullstackpython.com/vuejs.html)
 
 ## Additional Doc
@@ -51,14 +45,11 @@ Some errors & warnings by default can be removed: in the `package.json` file, yo
 ```
 "rules": {
 	"no-console": "off",
- 	"no-unused-vars": "off"
+ 	"no-unused-vars": "off" 
 }
 ```
 
 ### Dev vs Prod
-
-- From dev (auto-reload) to prod, the `package.json` file should swith from `"start": "npm run dev"` to `"start": "node server.js"`.
-- When working on the dev env, use `npm run serve` instead of `node server.js` to get live updates.
 
 ## Access local files
 
@@ -172,7 +163,6 @@ export default {
 				console.log(data);
 			})
 		}}
-		```
 
 ## On external packages
 
