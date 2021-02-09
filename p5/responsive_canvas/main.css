@@ -1,0 +1,15 @@
+:root {
+}
+
+.frame {
+	/* centering */
+	margin: 0 auto;
+	/* specifying width and height, relatively to the viewport */
+	height: 70vh;
+	max-width: 800px;
+}
+
+#myCanvas {
+	height: 100%;
+	max-width: 100%;
+}
