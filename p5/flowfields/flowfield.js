@@ -31,8 +31,8 @@ function setup() {
   
   fr = createP('');
   
-  cols = floor(W/scl);
-  rows = floor(H/scl);
+  cols = floor(H/scl);
+  rows = floor(W/scl);
   
   flowfield = new Array(cols * rows);
   

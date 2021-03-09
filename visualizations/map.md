@@ -18,15 +18,33 @@
 - Then set: project, path and svg:  
 
 	```
+	const margin = 10;
+
+	let width = 700;
+	let height = 500;
+	
+	const svg = d3.select(".dataviz")
+	    .append("svg")
+	    .attr("width", "100%")
+	    .attr("height", "100%")
+	    .attr("viewBox", `-${margin} -${margin} ${width+2*margin} ${height+2*margin}`)
+	    .style("border", "2px solid #000")
+	    .style("overflow", "visible");
+	
+	const mapset = d3.json("../static/data/trees/france-min.json")
+	
+	mapset.then(function(data) {
+	
 	const projection = d3.geoMercator()
-		.center([108, 23])
-		.scale(650);  
-
-	path = d3.geoPath().projection(projection);
-
-	svg.append("g")
- 	           .selectAll("path")
- 	           .data(topojson.feature(data, data.objects.map).features)
- 	           .join("path")
- 	             .attr("fill", "#F1F1F1")
- 	             .attr("d", path)
+	 	.center([48, 2])
+	 	.scale(100);
+	
+	 path = d3.geoPath().projection(projection);
+	
+		// creating the mask
+		svg.append("path")
+	      .datum(topojson.feature(data, data.objects["france-min"]))
+	      .attr("fill", "#ddd")
+	      .attr("d", path);
+	})
+	```

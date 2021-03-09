@@ -20,3 +20,20 @@ function draw() {
   strokeWeight(20);
   rect(0,0,W,H);
 }
+
+/*
+ * alternative if several canvas
+ *
+
+function sketch_idnameofdiv(p) {
+  p.setup = function () {
+    p.createCanvas(400,400);
+  }
+
+  p.draw = function () {
+    // stuff to draw
+  }
+}
+new p5(sketch_idnameofdiv, 'idnameofdiv')
+
+*/
