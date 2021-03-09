@@ -18,6 +18,7 @@
 - Then set: project, path and svg:  
 
 	```
+	// https://observablehq.com/@d3/bubble-map?collection=@observablehq/maps
 	const margin = 10;
 
 	let width = 700;
